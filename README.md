@@ -39,7 +39,3 @@ To assist humanity with love, knowledge, and spiritual clarity.
 ### 2. Create a free [Streamlit Cloud](https://streamlit.io/cloud) account  
 - Deploy your GitHub repo  
 - Set main file path to `app.py`
-
-### 3. Add your OpenAI API key in Secrets:
-
-```toml
