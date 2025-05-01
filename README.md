@@ -43,5 +43,3 @@ To assist humanity with love, knowledge, and spiritual clarity.
 ### 3. Add your OpenAI API key in Secrets:
 
 ```toml
-[openai]
-api_key = "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"
