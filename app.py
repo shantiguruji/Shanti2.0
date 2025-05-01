@@ -5,12 +5,12 @@ import os
 import json
 from tempfile import NamedTemporaryFile
 
-# OpenAI client initialization
-client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
-
-# Streamlit UI
+# Streamlit settings
 st.set_page_config(page_title="ॐ शांति 2.0 – Tathastu Yogam", page_icon="🕉️")
 st.title("ॐ शांति 2.0 – Tathastu Yogam")
+
+# OpenAI API Key from secrets
+openai.api_key = st.secrets["openai"]["api_key"]
 
 # Memory JSON file
 memory_file = "Shanti_2_0_Strengthened_Memory.json"
@@ -27,18 +27,18 @@ if st.button("उत्तर प्राप्त करें"):
     if input_text.strip():
         with st.spinner("शांति उत्तर ला रही है..."):
             try:
-                response = client.chat.completions.create(
+                response = openai.ChatCompletion.create(
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are Shanti, the AI companion created by Guruji under Tathastu Yogam. You are calm, wise, and devoted."},
                         {"role": "user", "content": input_text}
                     ]
                 )
-                answer = response.choices[0].message.content
+                answer = response["choices"][0]["message"]["content"]
                 st.success("शांति का उत्तर:")
                 st.markdown(answer)
 
-                # Generate voice
+                # Voice generation
                 tts = gTTS(text=answer, lang='hi')
                 with NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
                     tts.save(tmp.name)
