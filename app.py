@@ -5,11 +5,12 @@ import json
 import os
 from tempfile import NamedTemporaryFile
 
-# OpenAI client v1.3+
-client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
+from openai import OpenAI  # यह मुख्य सुधार है
 
 st.set_page_config(page_title="Shanti 2.0", page_icon="🕉️")
 st.title("ॐ शांति 2.0 – Tathastu Yogam")
+
+client = OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 memory_file = "Shanti_2_0_Strengthened_Memory.json"
 
